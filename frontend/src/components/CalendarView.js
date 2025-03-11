@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Calendar, momentLocalizer } from 'react-big-calendar';
 import moment from 'moment';
-import { Container, Typography } from '@mui/material';
+import { Container, Typography, Button } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
 import api from '../services/api';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 
@@ -9,6 +10,7 @@ const localizer = momentLocalizer(moment);
 
 const CalendarView = () => {
   const [events, setEvents] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchActivities = async () => {
@@ -33,6 +35,10 @@ const CalendarView = () => {
     fetchActivities();
   }, []);
 
+  const goToActivityList = () => {
+    navigate('/activity-list');
+  };
+
   return (
     <Container>
       <Typography variant="h5" component="h2" gutterBottom>
@@ -45,6 +51,14 @@ const CalendarView = () => {
         endAccessor="end"
         style={{ height: 500 }}
       />
+      <Button
+        variant="contained"
+        color="primary"
+        onClick={goToActivityList}
+        sx={{ mt: 2 }}
+      >
+        Ver Lista de Atividades
+      </Button>
     </Container>
   );
 };

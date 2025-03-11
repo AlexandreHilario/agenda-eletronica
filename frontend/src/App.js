@@ -13,6 +13,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/activities" element={<CalendarView />} />
+        <Route path="/activity-list" element={<ActivityList />} />
         <Route path="/create-activity" element={<ActivityForm />} />
         <Route path="*" element={<Login />} />
       </Routes>

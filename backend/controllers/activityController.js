@@ -1,5 +1,5 @@
 // backend/controllers/activityController.js
-const Activity = require('../models/activity');
+const Activity = require('../models/activityModel');
 
 const createActivity = async (req, res) => {
   const { name, description, start_time, end_time } = req.body;
@@ -34,4 +34,19 @@ const updateStatus = async (req, res) => {
   }
 };
 
-module.exports = { createActivity, getActivities, updateStatus };
+const deleteActivity = async (req, res) => {
+  try {
+    const { id } = req.params;
+    await Activity.destroy({ where: { id } });
+    res.status(200).json({ message: 'Activity deleted successfully' });
+  } catch (error) {
+    res.status(500).json({ error: 'Failed to delete activity' });
+  }
+};
+
+module.exports = {
+  createActivity,
+  getActivities,
+  updateStatus,
+  deleteActivity,
+};

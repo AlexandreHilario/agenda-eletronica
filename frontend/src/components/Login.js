@@ -20,6 +20,11 @@ const Login = () => {
     }
   };
 
+  const goToRegister = () => {
+    navigate('/register');
+  };
+
+
   return (
     <Container maxWidth="xs">
       <h2>Login</h2>
@@ -29,6 +34,9 @@ const Login = () => {
         {error && <p style={{ color: 'red' }}>{error}</p>}
         <Button type="submit" variant="contained" fullWidth>Entrar</Button>
       </form>
+      <Button onClick={goToRegister} variant="outlined" fullWidth sx={{ mt: 2 }}>
+        Criar Conta
+      </Button>
     </Container>
   );
 };
